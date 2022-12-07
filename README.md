@@ -1,5 +1,5 @@
 # tcheck
-Check image transparency
+Tool that aims to simplify image transparency checking. Aimed to be chained with other utilities.
 
 ## How to use:
 Pipe image file location to this program and it will echo that file path if it is transparent.
