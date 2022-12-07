@@ -10,15 +10,11 @@ pub fn get_image_transparent(path: &str) -> Option<bool>
         Ok(res) => res,
     };
     
-    let mut transparent = false;
-    let opaque = img.pixels()
-        .map(|(_,_,pixel)| if pixel.0[3] == 255 { true } else { false })
-        .last();
+    let opaque_pixels = img.pixels()
+        .map(|(_,_,pixel)| if pixel.0[3] != 0 { 1 } else { 0 })
+        .sum::<u32>();
 
-    if let Some(res) = opaque
-    {
-        transparent = res == false;
-    }
-
+    let (width, height) = img.dimensions();
+    let transparent = opaque_pixels != width * height;
     Some(transparent)
 }
