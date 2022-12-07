@@ -11,13 +11,13 @@ pub fn get_image_transparent(path: &str) -> Option<bool>
     };
     
     let mut transparent = false;
-    let last = img.pixels()
-        .take_while(|(_,_,pixel)| pixel.0[3] != 0)
+    let opaque = img.pixels()
+        .map(|(_,_,pixel)| if pixel.0[3] == 255 { true } else { false })
         .last();
 
-    if let Some(res) = last
+    if let Some(res) = opaque
     {
-        transparent = res.2.0[3] == 0;
+        transparent = res == false;
     }
 
     Some(transparent)
