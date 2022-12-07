@@ -3,7 +3,8 @@ use image::GenericImageView;
 pub fn get_image_transparent(path: &str) -> Option<bool>
 {
     let img = match image::open(path) {
-        Err(_err) => {
+        Err(err) => {
+            eprintln!("Failed to open image file {}, error: {}", path, err);
             return None;
         },
         Ok(res) => res,

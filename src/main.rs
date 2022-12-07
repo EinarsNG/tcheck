@@ -28,10 +28,6 @@ fn main()
                 println!("{}", path);
             }
         }
-        else
-        {
-            eprintln!("Failed to open image file: {}", path);
-        }
     };
 
     stdin().lock().lines().for_each(process_image);
