@@ -1,0 +1,2 @@
+# tcheck
+Check image transparency
